@@ -17,3 +17,9 @@ Clone repository, install dependencies, and run server
   npm install
   npm start
 ```
+
+## Contributors
+
+<a href="https://github.com/chandankrr/our-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=chandankrr/our-app" />
+</a>
