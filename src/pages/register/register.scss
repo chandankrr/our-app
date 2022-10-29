@@ -1,0 +1,149 @@
+@import '../../style.scss';
+
+// * {
+//   border: 1px solid red;
+// }
+
+.register {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    position: fixed;
+    top: 20px;
+    left: 30px;
+  }
+
+  .card {
+    width: 25%;
+    background-color: white;
+    min-height: 500px;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: 12px;
+
+    h2 {
+      margin-top: 10px;
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      input {
+        padding: 16px;
+        font-size: 18px;
+        border: 1px solid rgb(56, 56, 56);
+        border-radius: 5px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #0859aa;
+        box-shadow: 0 0 2px #0a66c2;
+      }
+
+      button {
+        color: white;
+        background-color: #0a66c2;
+        border: none;
+        outline: none;
+        border-radius: 50px;
+        padding: 16px;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0859aa;
+        }
+      }
+    }
+
+    .sign-in {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 300;
+        color: rgb(81, 81, 81);
+      }
+
+      span::before {
+        display: inline-block;
+        content: '';
+        border-top: 1px solid lightgrey;
+        width: 8rem;
+        margin-right: 1rem;
+        transform: translateY(-4px);
+      }
+
+      span::after {
+        display: inline-block;
+        content: '';
+        border-top: 1px solid lightgrey;
+        width: 8rem;
+        margin-left: 1rem;
+        transform: translateY(-4px);
+      }
+
+      button {
+        padding: 12px;
+        font-size: 16px;
+        background-color: #ffffff;
+        color: #616161;
+        border: 1px solid rgb(56, 56, 56);
+        border-radius: 50px;
+        cursor: pointer;
+      }
+    }
+
+    .sign-up {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      margin-top: 20px;
+
+      span {
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      button {
+        outline: none;
+        border: none;
+        background-color: white;
+        color: #0a66c2;
+        padding: 0;
+        font-size: 16px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    @include tablet {
+      width: 40%;
+    }
+
+    @include mobile {
+      width: 80%;
+    }
+  }
+}
