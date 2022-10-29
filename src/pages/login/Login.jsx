@@ -9,9 +9,9 @@ const Login = () => {
         <h2>Sign in</h2>
         <p>Hi, Welcome to OurApp</p>
         <form>
-          <input type="text" placeholder="Username" />
+          <input type="text" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Login</button>
+          <button>Sign in</button>
         </form>
         <div className="sign-in">
           <span>or</span>
