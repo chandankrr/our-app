@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   createBrowserRouter,
   Navigate,
@@ -8,6 +9,8 @@ import {
 import LeftBar from './components/leftBar/LeftBar';
 import Navbar from './components/navbar/Navbar';
 import RightBar from './components/rightBar/RightBar';
+import { AuthContext } from './context/authContext';
+import { DarkModeContext } from './context/darkModeContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
@@ -15,15 +18,17 @@ import Register from './pages/register/Register';
 import './style.scss';
 
 function App() {
-  const currentUser = true;
+  const { currentUser } = useContext(AuthContext);
+
+  const { darkMode } = useContext(DarkModeContext);
 
   const Layout = () => {
     return (
-      <div>
+      <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
         <Navbar />
         <div style={{ display: 'flex' }}>
-          {/* <LeftBar /> */}
-          <div style={{ flex: 6 }}>
+          <LeftBar />
+          <div style={{ flex: 5 }}>
             <Outlet />
           </div>
           <RightBar />
