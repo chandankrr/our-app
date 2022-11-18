@@ -1,7 +1,4 @@
 @import '../../style.scss';
-// * {
-//   border: 1px solid red;
-// }
 
 .profile {
   @include themify($themes) {

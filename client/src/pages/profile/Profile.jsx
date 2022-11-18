@@ -1,12 +1,4 @@
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import LanguageIcon from '@mui/icons-material/Language';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import PinterestIcon from '@mui/icons-material/Pinterest';
 import PlaceIcon from '@mui/icons-material/Place';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import Posts from '../../components/posts/Posts';
 import './profile.scss';
 
