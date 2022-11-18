@@ -3,47 +3,69 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { format } from 'timeago.js';
 import Comments from '../comments/Comments';
 import './post.scss';
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
+  const [like, setLike] = useState(post.likes.length);
+  const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  //TEMPORARY
-  const liked = true;
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`users/${post.userId}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [post.userId]);
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="post">
       <div className="container">
         <div className="user">
           <div className="userInfo">
-            <img src={post.profilePic} alt="" />
+            <img
+              src={user.profilePicture || PF + 'person/noAvatar.png'}
+              alt=""
+            />
             <div className="details">
               <Link
-                to={`/profile/${post.userId}`}
+                to={`profile/${user.username}`}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
-                <span className="name">{post.name}</span>
+                <span className="name">{user.username}</span>
               </Link>
-              <span className="date">1 min ago</span>
+              <span className="date">{format(post.createdAt)}</span>
             </div>
           </div>
           <MoreHorizIcon />
         </div>
         <div className="content">
           <p>{post.desc}</p>
-          <img src={post.img} alt="" />
+          <img src={PF + post.img} alt="" />
         </div>
         <div className="info">
           <div className="item">
-            {liked ? (
-              <FavoriteOutlinedIcon style={{ color: '#f0544f' }} />
+            {isLiked ? (
+              <FavoriteOutlinedIcon
+                onClick={likeHandler}
+                style={{ color: '#f0544f' }}
+              />
             ) : (
-              <FavoriteBorderOutlinedIcon />
+              <FavoriteBorderOutlinedIcon onClick={likeHandler} />
             )}
-            12 Likes
+            {`${like} Likes`}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
