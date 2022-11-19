@@ -67,6 +67,10 @@
         &:hover {
           background-color: #0859aa;
         }
+
+        &:disabled {
+          cursor: not-allowed;
+        }
       }
     }
 

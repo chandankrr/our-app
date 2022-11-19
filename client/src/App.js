@@ -3,12 +3,12 @@ import {
   createBrowserRouter,
   Navigate,
   Outlet,
-  Route,
   RouterProvider,
 } from 'react-router-dom';
 import LeftBar from './components/leftBar/LeftBar';
 import Navbar from './components/navbar/Navbar';
 import RightBar from './components/rightBar/RightBar';
+import { AuthContext } from './context/AuthContext';
 import { DarkModeContext } from './context/darkModeContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -17,8 +17,9 @@ import Register from './pages/register/Register';
 import './style.scss';
 
 function App() {
-
   const { darkMode } = useContext(DarkModeContext);
+
+  const { user } = useContext(AuthContext);
 
   const Layout = () => {
     return (
@@ -38,9 +39,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-          <Layout />
-      ),
+      element: <Layout />,
       children: [
         { path: '/', element: <Home /> },
         {

@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import Friends from '../../assets/1.png';
 import Messages from '../../assets/10.png';
 import Tutorials from '../../assets/11.png';
