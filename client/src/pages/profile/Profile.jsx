@@ -1,18 +1,34 @@
 import PlaceIcon from '@mui/icons-material/Place';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import Posts from '../../components/posts/Posts';
 import './profile.scss';
 
 const Profile = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({});
+  const username = useParams().username;
+  console.log(username);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [username]);
+
   return (
     <div className="profile">
       <div className="images">
         <img
-          src="https://images.pexels.com/photos/13440765/pexels-photo-13440765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src={user.coverPicter || PF + 'person/noCover.png'}
           alt=""
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          src={user.profilePicture || PF + 'person/noAvatar.png'}
           alt=""
           className="profilePic"
         />
@@ -20,17 +36,21 @@ const Profile = () => {
       <div className="profileContainer">
         <div className="uInfo">
           <div className="center">
-            <span>Jane Doe</span>
+            <span>{user.username}</span>
+            <p>{user.desc}</p>
             <div className="info">
               <div className="item">
                 <PlaceIcon fontSize="small" />
-                <span>Patna, India</span>
+                <span>{`${user.city}, ${user.from}`}</span>
               </div>
             </div>
             <button>follow</button>
           </div>
         </div>
-        <Posts username="john" />
+        {/* TODO: - friends components
+          <Friends user={user}>
+         */}
+        <Posts username={username} />
       </div>
     </div>
   );

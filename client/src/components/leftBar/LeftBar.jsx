@@ -12,19 +12,19 @@ import Events from '../../assets/6.png';
 import Gaming from '../../assets/7.png';
 import Gallery from '../../assets/8.png';
 import Videos from '../../assets/9.png';
-import { AuthContext } from '../../context/authContext';
 import './leftBar.scss';
 
 const LeftBar = () => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <div className="leftBar">
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src={currentUser.profilePic} alt="user" />
-            <span>{currentUser.name}</span>
+            <img
+              src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="user"
+            />
+            <span>{'john'}</span>
           </div>
           <div className="item">
             <img src={Friends} alt="friends" />

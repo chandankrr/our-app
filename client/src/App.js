@@ -9,7 +9,6 @@ import {
 import LeftBar from './components/leftBar/LeftBar';
 import Navbar from './components/navbar/Navbar';
 import RightBar from './components/rightBar/RightBar';
-import { AuthContext } from './context/authContext';
 import { DarkModeContext } from './context/darkModeContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -18,7 +17,6 @@ import Register from './pages/register/Register';
 import './style.scss';
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
 
   const { darkMode } = useContext(DarkModeContext);
 
@@ -37,26 +35,16 @@ function App() {
     );
   };
 
-  const ProtectedRoute = ({ children }) => {
-    if (!currentUser) {
-      return <Navigate to="/login" />;
-    }
-
-    return children;
-  };
-
   const router = createBrowserRouter([
     {
       path: '/',
       element: (
-        <ProtectedRoute>
           <Layout />
-        </ProtectedRoute>
       ),
       children: [
         { path: '/', element: <Home /> },
         {
-          path: '/profile/:id',
+          path: '/profile/:username',
           element: <Profile />,
         },
       ],

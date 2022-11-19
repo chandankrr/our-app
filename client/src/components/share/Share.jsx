@@ -1,21 +1,18 @@
-import { useContext } from 'react';
 import Friend from '../../assets/friend.png';
 import Image from '../../assets/img.png';
 import Map from '../../assets/map.png';
-import { AuthContext } from '../../context/authContext';
 import './share.scss';
 
 const Share = () => {
-  const { currentUser } = useContext(AuthContext);
   return (
     <div className="share">
       <div className="container">
         <div className="top">
-          <img src={currentUser.profilePic} alt="" />
-          <input
-            type="text"
-            placeholder={`What's on your mind ${currentUser.name}?`}
+          <img
+            src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt=""
           />
+          <input type="text" placeholder={`What's on your mind ${'john'}?`} />
         </div>
         <hr />
         <div className="bottom">
