@@ -19,7 +19,7 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`users/${post.userId}`);
+      const res = await axios.get(`/users/${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -41,7 +41,7 @@ const Post = ({ post }) => {
             />
             <div className="details">
               <Link
-                to={`profile/${user.username}`}
+                to={`/profile/${user.username}`}
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <span className="name">{user.username}</span>

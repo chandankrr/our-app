@@ -3,16 +3,18 @@ import { useEffect, useState } from 'react';
 import Post from '../post/Post';
 import './posts.scss';
 
-const Posts = () => {
+const Posts = ({ username }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get('posts/timeline/63695d4348789174064c589d');
+      const res = username
+        ? await axios.get('/posts/profile/' + username)
+        : await axios.get('posts/timeline/63695d4348789174064c589d');
       setPosts(res.data);
     };
     fetchPosts();
-  }, []);
+  }, [username]);
 
   return (
     <div className="posts">

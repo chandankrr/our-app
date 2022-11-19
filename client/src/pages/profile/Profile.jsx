@@ -30,7 +30,7 @@ const Profile = () => {
             <button>follow</button>
           </div>
         </div>
-        <Posts />
+        <Posts username="john" />
       </div>
     </div>
   );
