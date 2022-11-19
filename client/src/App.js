@@ -50,11 +50,11 @@ function App() {
     },
     {
       path: '/login',
-      element: user ? <Navigate to="/" /> : <Login />,
+      element: user ? <Navigate replace to={'/'} /> : <Login />,
     },
     {
       path: '/register',
-      element: user ? <Navigate to="/" /> : <Register />,
+      element: user ? <Navigate replace to={'/'} /> : <Register />,
     },
   ]);
 

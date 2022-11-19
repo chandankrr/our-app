@@ -8,11 +8,14 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import { DarkModeContext } from '../../context/darkModeContext';
 import './navbar.scss';
 
 const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
     <div className="navbar">
@@ -40,10 +43,16 @@ const Navbar = () => {
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon />
         <div className="user">
-          <img
-            src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt="user"
-          />
+          <Link to={`/profile/${user.username}`}>
+            <img
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + 'person/noAvatar.png'
+              }
+              alt="user"
+            />
+          </Link>
           <span>{'John'}</span>
         </div>
       </div>

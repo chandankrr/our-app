@@ -1,20 +1,22 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import Post from '../post/Post';
 import './posts.scss';
 
 const Posts = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get('/posts/profile/' + username)
-        : await axios.get('posts/timeline/63695d4348789174064c589d');
+        : await axios.get('posts/timeline/' + user._id);
       setPosts(res.data);
     };
     fetchPosts();
-  }, [username]);
+  }, [username, user._id]);
 
   return (
     <div className="posts">

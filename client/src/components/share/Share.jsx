@@ -1,18 +1,30 @@
+import { useContext } from 'react';
 import Friend from '../../assets/friend.png';
 import Image from '../../assets/img.png';
 import Map from '../../assets/map.png';
+import { AuthContext } from '../../context/AuthContext';
 import './share.scss';
 
 const Share = () => {
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="share">
       <div className="container">
         <div className="top">
           <img
-            src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + 'person/noAvatar.png'
+            }
             alt=""
           />
-          <input type="text" placeholder={`What's on your mind ${'john'}?`} />
+          <input
+            type="text"
+            placeholder={`What's on your mind ${user.username}?`}
+          />
         </div>
         <hr />
         <div className="bottom">
