@@ -7,7 +7,7 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { DarkModeContext } from '../../context/darkModeContext';
 import './navbar.scss';
@@ -16,6 +16,13 @@ const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const navigate = useNavigate;
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate('/register');
+  };
 
   return (
     <div className="navbar">
@@ -54,6 +61,18 @@ const Navbar = () => {
             />
           </Link>
           <span>{'John'}</span>
+          <span
+            onClick={logout}
+            style={{
+              backgroundColor: '#f0544f',
+              padding: '5px',
+              color: 'white',
+              cursor: 'pointer',
+              marginLeft: '20px',
+            }}
+          >
+            Logout
+          </span>
         </div>
       </div>
     </div>
