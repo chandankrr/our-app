@@ -55,10 +55,10 @@ const Login = () => {
             )}
           </button>
         </form>
-        <div className="sign-in">
+        {/* <div className="sign-in">
           <span>or</span>
           <button>Sign in with Google</button>
-        </div>
+        </div> */}
         <div className="sign-up">
           <span>New to OurApp?</span>
           <Link to="/register">

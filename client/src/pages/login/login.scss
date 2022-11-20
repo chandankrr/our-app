@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../../assets/bg-1.png);
 
   h1 {
     font-size: 30px;
@@ -17,7 +18,7 @@
   .card {
     width: 25%;
     background-color: white;
-    min-height: 500px;
+    min-height: 450px;
     padding: 24px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     border-radius: 12px;
