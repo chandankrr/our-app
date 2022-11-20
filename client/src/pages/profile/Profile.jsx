@@ -23,12 +23,18 @@ const Profile = () => {
     <div className="profile">
       <div className="images">
         <img
-          src={user.coverPicter || PF + 'person/noCover.png'}
+          src={
+            user.coverPicter ? PF + user.coverPicter : PF + 'person/noCover.png'
+          }
           alt=""
           className="cover"
         />
         <img
-          src={user.profilePicture || PF + 'person/noAvatar.png'}
+          src={
+            user.profilePicture
+              ? PF + user.profilePicture
+              : PF + 'person/noAvatar.png'
+          }
           alt=""
           className="profilePic"
         />

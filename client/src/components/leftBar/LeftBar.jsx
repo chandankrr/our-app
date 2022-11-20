@@ -18,13 +18,6 @@ const LeftBar = () => {
     <div className="leftBar">
       <div className="container">
         <div className="menu">
-          <div className="user">
-            <img
-              src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="user"
-            />
-            <span>{'john'}</span>
-          </div>
           <div className="item">
             <img src={Friends} alt="friends" />
             <span>Friends</span>

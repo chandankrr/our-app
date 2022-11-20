@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import axios from 'axios';
+import { useContext, useRef, useState } from 'react';
 import Friend from '../../assets/friend.png';
 import Image from '../../assets/img.png';
 import Map from '../../assets/map.png';
@@ -8,6 +9,38 @@ import './share.scss';
 const Share = () => {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc = useRef();
+
+  const [file, setFile] = useState(null);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    };
+
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append('name', fileName);
+      data.append('file', file);
+      newPost.img = fileName;
+      console.log(newPost);
+      try {
+        await axios.post('/upload', data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    try {
+      await axios.post('/posts', newPost);
+      window.location.reload()
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="share">
@@ -24,12 +57,19 @@ const Share = () => {
           <input
             type="text"
             placeholder={`What's on your mind ${user.username}?`}
+            ref={desc}
           />
         </div>
         <hr />
-        <div className="bottom">
+        <form className="bottom" onSubmit={submitHandler}>
           <div className="left">
-            <input type="file" id="file" style={{ display: 'none' }} />
+            <input
+              type="file"
+              id="file"
+              accept=".png, .jpg, .jpeg"
+              onChange={(e) => setFile(e.target.files[0])}
+              style={{ display: 'none' }}
+            />
             <label htmlFor="file">
               <div className="item">
                 <img src={Image} alt="" />
@@ -46,9 +86,9 @@ const Share = () => {
             </div>
           </div>
           <div className="right">
-            <button>Share</button>
+            <button type="submit">Share</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
