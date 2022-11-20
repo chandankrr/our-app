@@ -1,3 +1,4 @@
+import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
@@ -58,6 +59,15 @@ const Share = () => {
           />
         </div>
         <hr />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <CancelIcon
+              className="shareCancelImg"
+              onClick={() => setFile(null)}
+            />
+          </div>
+        )}
         <form className="bottom" onSubmit={submitHandler}>
           <div className="left">
             <input
