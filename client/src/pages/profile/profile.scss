@@ -1,5 +1,9 @@
 @import '../../style.scss';
 
+// * {
+//   border: 1px solid red;
+// }
+
 .profile {
   @include themify($themes) {
     background-color: themed('bgSoft');
@@ -25,25 +29,25 @@
         right: 0;
         margin: auto;
         top: 100px;
+        border: 2px solid white;
       }
     }
     .profileContainer {
       padding: 20px 70px;
 
       .uInfo {
-        height: 200px;
         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
         -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
         box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
         border-radius: 20px;
         background-color: themed('bg');
         color: themed('textColor');
-        display: flex;
-        align-items: center;
-        justify-content: baseline;
         margin-bottom: 20px;
+        padding: 20px;
 
         .center {
+          padding-top: 25px;
+          padding-bottom: 25px;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -53,6 +57,10 @@
           span {
             font-size: 30px;
             font-weight: 500;
+          }
+
+          p {
+            font-size: 14px;
           }
 
           .info {
@@ -81,13 +89,36 @@
             cursor: pointer;
           }
         }
+        .rightbarTitle {
+          font-size: 18px;
+          font-weight: 500;
+          margin-bottom: 14px;
+        }
 
-        .right {
-          flex: 1;
+        .rightbarFollowings {
           display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        .rightbarFollowing {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+          cursor: pointer;
+        }
+
+        .rightbarFollowingImg {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+
+        .rightbarFollowingName {
+          text-align: center;
+          padding-top: 5px;
+          color: themed('textColor');
         }
       }
     }

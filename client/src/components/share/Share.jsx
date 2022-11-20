@@ -1,8 +1,5 @@
 import axios from 'axios';
 import { useContext, useRef, useState } from 'react';
-import Friend from '../../assets/friend.png';
-import Image from '../../assets/img.png';
-import Map from '../../assets/map.png';
 import { AuthContext } from '../../context/AuthContext';
 import './share.scss';
 
@@ -36,7 +33,7 @@ const Share = () => {
 
     try {
       await axios.post('/posts', newPost);
-      window.location.reload()
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -72,16 +69,16 @@ const Share = () => {
             />
             <label htmlFor="file">
               <div className="item">
-                <img src={Image} alt="" />
+                <img src={PF + 'assets/img.png'} alt="" />
                 <span>Add Image</span>
               </div>
             </label>
             <div className="item">
-              <img src={Map} alt="" />
+              <img src={PF + 'assets/map.png'} alt="" />
               <span>Add Place</span>
             </div>
             <div className="item">
-              <img src={Friend} alt="" />
+              <img src={PF + 'assets/friend.png'} alt="" />
               <span>Tag Friends</span>
             </div>
           </div>
