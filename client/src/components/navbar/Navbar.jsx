@@ -60,7 +60,7 @@ const Navbar = () => {
               alt="user"
             />
           </Link>
-          <span>{'John'}</span>
+          <span>{user.username}</span>
           <span
             onClick={logout}
             style={{

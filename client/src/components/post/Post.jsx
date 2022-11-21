@@ -84,7 +84,7 @@ const Post = ({ post }) => {
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            12 Comments
+            {`${Math.floor((Math.random() * 10) + 1)} Comments`}
           </div>
           <div className="item">
             <ShareOutlinedIcon />

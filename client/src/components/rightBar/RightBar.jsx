@@ -1,6 +1,13 @@
+import { useState } from 'react';
 import './rightBar.scss';
 
 const RightBar = () => {
+  const [buttonText, setButtonText] = useState('follow');
+
+  function handleClick() {
+    setButtonText('unfollow');
+  }
+
   return (
     <div className="rightBar">
       <div className="container">
@@ -12,10 +19,10 @@ const RightBar = () => {
                 src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt=""
               />
-              <span>Jane Doe</span>
+              <span>Akshdeep</span>
             </div>
             <div className="buttons">
-              <button>follow</button>
+              <button onClick={handleClick}>{buttonText}</button>
               <button>dismiss</button>
             </div>
           </div>
@@ -25,7 +32,7 @@ const RightBar = () => {
                 src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt=""
               />
-              <span>Jane Doe</span>
+              <span>Lekhraj</span>
             </div>
             <div className="buttons">
               <button>follow</button>
@@ -42,10 +49,10 @@ const RightBar = () => {
                 alt=""
               />
               <p>
-                <span>Jane Doe</span> changed their cover picture
+                <span>Rahul</span> changed their cover picture
               </p>
             </div>
-            <span>1 min ago</span>
+            <span>10 min ago</span>
           </div>
           <div className="user">
             <div className="userInfo">
@@ -54,10 +61,10 @@ const RightBar = () => {
                 alt=""
               />
               <p>
-                <span>Jane Doe</span> changed their cover picture
+                <span>Ritu</span> changed their username
               </p>
             </div>
-            <span>1 min ago</span>
+            <span>45 min ago</span>
           </div>
         </div>
         <div className="item">
@@ -69,7 +76,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Rohan</span>
             </div>
           </div>
           <div className="user">
@@ -79,7 +86,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Anu</span>
             </div>
           </div>
           <div className="user">
@@ -89,7 +96,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Neelu</span>
             </div>
           </div>
           <div className="user">
@@ -99,7 +106,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Shewta</span>
             </div>
           </div>
           <div className="user">
@@ -109,7 +116,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Srishti</span>
             </div>
           </div>
           <div className="user">
@@ -119,7 +126,7 @@ const RightBar = () => {
                 alt=""
               />
               <div className="online" />
-              <span>Jane Doe</span>
+              <span>Baldeep</span>
             </div>
           </div>
         </div>
