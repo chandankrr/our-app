@@ -7,6 +7,8 @@ A social media web app where anyone can share there post, thought, and memories.
 - Add, edit, and delete post
 - Like and comment on post
 - User authentication
+- Update user information'
+- Follow and unfollow user
 
 ## Install Locally
 
